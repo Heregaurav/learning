@@ -1,14 +1,14 @@
-## Build the docker image :
-## push the docker image to docker hub: 
-## SSH into out VM and start the new image : 
+name: Deploy the backend
 
-name : Deploy the backend
-on: 
+on:
   push:
-    btanches:[ main ]
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -16,8 +16,8 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v2
         with:
-          username:${{ secrets.DOCKERHUB_USERNAME }}
-          password:${{ secrets.DOCKERHUB_TOKEN }}4+
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -25,4 +25,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile.backend
           push: true
-          tags: learning/todo-app-backend:${{github.sha}}
+          tags: yourgauravv/todo-app-backend:${{ github.sha }}
