@@ -11,7 +11,7 @@ COPY ./apps/frontend ./apps/frontend
 COPY . . 
 
 RUN bun install 
-RUN bun run db:migrate
+RUN bun run db:generate
 RUN DATABASE_URL=${DATABASE_URL}bun run build
 
 EXPOSE 3000
