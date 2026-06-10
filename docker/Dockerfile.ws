@@ -7,7 +7,7 @@ COPY   ./bun.lock ./bun.lock
 COPY  ./package.json  ./package.json
 COPY  ./turbo.json  ./turbo.json
 
-COPY ./appa/ws ./apps/ws
+COPY ./apps/ws ./apps/ws
 
 COPY . . 
 
